@@ -250,7 +250,7 @@ footer{padding-block:28px 40px;font-family:var(--mono);font-size:.74rem;color:va
       <div><div class="eyebrow">Own projects</div><h2 style="margin-top:8px">Things I built on my own time.</h2></div>
       <p>Public code on GitHub unless marked private. Newest first within the selected area.</p>
     </div>
-    <div class="projects" id="projects"></div>
+    <div class="projects" id="project-grid"></div>
     <p class="empty" id="projects-empty" hidden>No personal project in this area yet. The experience section has the production work.</p>
   </div>
 </section>
@@ -514,7 +514,7 @@ function renderAreas(){
 function renderProjects(){
   const list = PROJECTS.filter(p => active==="all" || p.areas.includes(active));
   document.getElementById("projects-empty").hidden = list.length>0;
-  document.getElementById("projects").innerHTML = list.map(p => `
+  document.getElementById("project-grid").innerHTML = list.map(p => `
     <article class="proj${p.featured && active==="all" ? " featured":""}">
       <div class="meta"><span>${esc(p.year)}</span>${p.stars ? `<span class="stars">★ ${p.stars}</span>`:""}<span>${p.areas.map(a => esc(byId[a].name)).join(" · ")}</span></div>
       <h3>${p.url ? `<a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.name)}</a>` : esc(p.name)}</h3>
