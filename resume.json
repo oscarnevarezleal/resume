@@ -1,0 +1,70 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+  "basics": {
+    "name": "Oscar Nevarez",
+    "label": "Engineering leader · AI agents in production · ex-CTO, Kamina GO (Grupo Traxión)",
+    "email": "oscar@onevarez.com",
+    "url": "https://onevarez.com",
+    "summary": "Engineering leader with 20+ years of hands-on work and a CTO tenure at Kamina GO (Grupo Traxión), where the team shipped AI document intelligence, an internal LLM agent and multi-tenant analytics into daily operations at 5,000+ logistics movements a day. Builds with MCP servers, computer-use and voice agents, Rust and Tauri. Looking to lead an AI engineering organisation: Head of AI, Director of Engineering or Engineering Manager, remote across the Americas or hybrid in Mexico City.",
+    "location": {"city": "Mexico City", "countryCode": "MX", "region": "CDMX"},
+    "profiles": [
+      {"network": "LinkedIn", "username": "oscarnevarezleal", "url": "https://www.linkedin.com/in/oscarnevarezleal"},
+      {"network": "GitHub", "username": "oscarnevarezleal", "url": "https://github.com/oscarnevarezleal"},
+      {"network": "Medium", "username": "oscar-nevarez", "url": "https://oscar-nevarez.medium.com/"},
+      {"network": "X", "username": "wownevarez", "url": "https://x.com/wownevarez"},
+      {"network": "Codementor", "username": "fuwire", "url": "https://www.codementor.io/@fuwire"}
+    ]
+  },
+  "work": [
+    {
+      "name": "Kamina GO (Grupo Traxión)",
+      "position": "CTO · Tech Lead Manager",
+      "location": "Mexico City",
+      "endDate": "2026-10",
+      "summary": "Led technology for a freight marketplace and execution platform inside one of Mexico's largest logistics and mobility groups, running 5,000+ logistics movements a day. Owned architecture, priorities and the engineering team.",
+      "highlights": [
+        "Led the team that built mobile proof-of-delivery capture with validation, OCR and AI contextual extraction, exception handling, invoice management and reconciliation, and payment follow-up.",
+        "Custom POD and evidence routers handling varied document layouts through content extraction and per-document model routing.",
+        "Multimedia evidence management system accepting audio, video and images, interpreting them with AI and feeding several downstream systems.",
+        "Internal AI agent spanning datasets and APIs across business areas, used through a simple Slack interface.",
+        "Multi-tenant dashboards and analytics on Athena and Metabase.",
+        "Broker–shipper matching and brokerage flows connected to lending."
+      ]
+    },
+    {
+      "name": "ONE VAREZ (independent consulting)",
+      "position": "Software engineer, data architect, AI specialist",
+      "location": "Mexico City · remote",
+      "summary": "Software development, data architecture and AI solutions for clients across 20+ years; 100+ projects delivered. Cloud and serverless architecture on AWS and GCP, PHP/Laravel platforms, Node/TypeScript services, data pipelines.",
+      "highlights": [
+        "Serverless and container platforms with infrastructure as code (CDK, CloudFormation, buildpacks).",
+        "Data and document pipelines, from crawlers to extraction and analytics.",
+        "Open-source maintainer: gh-cms (179 stars), Laraboot toolchain, GitHub Actions and Claude Code plugins.",
+        "Mentor on Codementor."
+      ]
+    }
+  ],
+  "projects": [
+    {"name": "So Record", "description": "Claude Code plugin that records Playwright browser sessions and renders cinematic videos; Rust session engine and native exporter.", "url": "https://github.com/oscarnevarezleal/so-record-plugin", "keywords": ["Rust", "Playwright MCP", "Claude Code", "AVFoundation"]},
+    {"name": "Muse", "description": "Claude Code skill that reviews work through 17 distilled creative perspectives.", "url": "https://github.com/oscarnevarezleal/claude-muse-skill", "keywords": ["Claude Code", "Python"]},
+    {"name": "Smart Document Router", "description": "Serverless classify → extract → embed → route pipeline with RAG chat; Bedrock, Textract, pgvector, CDK.", "url": "https://github.com/oscarnevarezleal/sdr-rag-hackathon", "keywords": ["AWS Lambda", "Bedrock", "Textract", "pgvector", "CDK"]},
+    {"name": "gh-cms", "description": "Headless CMS using GitHub Issues and GitHub Actions, built with Hugo. 179 stars.", "url": "https://github.com/oscarnevarezleal/gh-cms", "keywords": ["GitHub Actions", "Hugo"]},
+    {"name": "q-web", "description": "Web terminal that keeps PTY processes alive and streams them to the browser.", "url": "https://github.com/oscarnevarezleal/q-web", "keywords": ["TypeScript", "Socket.IO", "xterm.js"]},
+    {"name": "Dynamic Island delivery tracker", "description": "iOS Live Activities demo with ActivityKit and WidgetKit.", "url": "https://github.com/oscarnevarezleal/ios-dynamic-island", "keywords": ["Swift", "ActivityKit", "WidgetKit"]},
+    {"name": "prrr", "description": "CLI that drafts pull request descriptions with an LLM.", "url": "https://github.com/oscarnevarezleal/prr", "keywords": ["Python", "OpenAI"]},
+    {"name": "Laraboot", "description": "Buildpack-based toolchain for bootstrapping Laravel applications.", "url": "https://github.com/oscarnevarezleal?tab=repositories&q=laraboot", "keywords": ["Go", "Buildpacks", "PHP"]},
+    {"name": "Job pipeline (private)", "description": "Daily pipeline that harvests leadership roles from 8 boards and ~455 ATS boards, verifies links, screens with an LLM and emails a digest; a Claude routine reviews and learns taste.", "keywords": ["Python", "Playwright", "GitHub Actions", "Claude"]}
+  ],
+  "skills": [
+    {"name": "AI & agents", "keywords": ["Claude", "OpenAI", "Bedrock", "MCP servers", "computer use", "voice agents", "RAG", "pgvector", "model routing", "evals"]},
+    {"name": "Languages", "keywords": ["Python", "TypeScript", "Node.js", "Rust", "Go", "PHP", "Swift"]},
+    {"name": "Cloud", "keywords": ["AWS", "Lambda", "Fargate", "S3", "DynamoDB", "Athena", "CDK", "CloudFormation", "GCP", "Cloudflare Workers", "Docker", "buildpacks"]},
+    {"name": "Data", "keywords": ["PostgreSQL", "DynamoDB", "Athena", "Metabase", "pgvector"]},
+    {"name": "Leadership", "keywords": ["hiring", "coaching", "roadmap", "architecture", "budget", "stakeholder management"]}
+  ],
+  "languages": [
+    {"language": "Spanish", "fluency": "Native"},
+    {"language": "English", "fluency": "Professional working proficiency"}
+  ],
+  "meta": {"version": "2026-10-12", "canonical": "https://github.com/oscarnevarezleal/resume"}
+}

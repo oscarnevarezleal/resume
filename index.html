@@ -1,0 +1,601 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Oscar Nevarez</title>
+<meta name="description" content="Oscar Nevarez: engineering leader for AI agents in production. Ex-CTO at Kamina GO (Grupo Traxión), Mexico City. Expertise, projects and resume.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a sticky top bar, a two-column hero (thesis left, an operations-style fact ledger right),
+   then full-width sections on a 1120px measure; area chips filter both expertise and projects. */
+:root{
+  --bg:#F7F7FA;            /* paper with a cool violet bias */
+  --surface:#FFFFFF;
+  --ink:#16141F;
+  --ink-2:#4A4760;
+  --ink-3:#7A7791;
+  --line:#DEDCE8;
+  --accent:#5B3FD1;        /* jacaranda */
+  --accent-ink:#FFFFFF;
+  --accent-soft:#EEEAFB;
+  --ledger:#16141F;        /* the hero ledger is dark in both themes */
+  --ledger-ink:#F4F2FB;
+  --ledger-dim:#9B97B5;
+  --ledger-line:#2E2A40;
+  --display:"Bricolage Grotesque","Avenir Next","Helvetica Neue",Arial,sans-serif;
+  --body:"Instrument Sans","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121019;--surface:#1A1824;--ink:#EEEBF7;--ink-2:#B9B5CC;--ink-3:#847F9C;--line:#2C2939;
+    --accent:#A08CF2;--accent-ink:#15112A;--accent-soft:#272042;
+    --ledger:#0C0B12;--ledger-ink:#F4F2FB;--ledger-dim:#8E89AA;--ledger-line:#262335;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121019;--surface:#1A1824;--ink:#EEEBF7;--ink-2:#B9B5CC;--ink-3:#847F9C;--line:#2C2939;
+  --accent:#A08CF2;--accent-ink:#15112A;--accent-soft:#272042;
+  --ledger:#0C0B12;--ledger-ink:#F4F2FB;--ledger-dim:#8E89AA;--ledger-line:#262335;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto} *{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline;text-underline-offset:3px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+h1,h2,h3{font-family:var(--display);line-height:1.1;margin:0;text-wrap:balance;letter-spacing:-0.01em}
+h2{font-size:clamp(1.7rem,3.2vw,2.4rem);font-weight:700}
+h3{font-size:1.15rem;font-weight:600}
+p{margin:0}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px}
+.eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* top bar */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:18px;height:58px}
+.brand{font-family:var(--display);font-weight:700;font-size:1.05rem;color:var(--ink);white-space:nowrap}
+.brand small{font-family:var(--mono);font-weight:400;font-size:.7rem;color:var(--ink-3);margin-left:10px;letter-spacing:.08em}
+nav{margin-left:auto;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+nav a{color:var(--ink-2);font-size:.9rem;font-weight:500;padding:7px 11px;border-radius:999px;white-space:nowrap}
+nav a:hover{background:var(--accent-soft);color:var(--ink);text-decoration:none}
+.cta{background:var(--ink);color:var(--bg)!important;padding:8px 14px!important;font-weight:600}
+.cta:hover{background:var(--accent)!important;color:var(--accent-ink)!important}
+
+/* hero */
+.hero{padding-block:56px 48px}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.9fr);gap:40px;align-items:start}
+.hero h1{font-size:clamp(2.4rem,5.6vw,4.4rem);font-weight:800;letter-spacing:-0.025em;line-height:1.02}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.lede{font-size:1.15rem;color:var(--ink-2);max-width:40rem;margin-top:22px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:999px;font-weight:600;font-size:.95rem;border:1px solid var(--line);color:var(--ink);background:var(--surface)}
+.btn:hover{text-decoration:none;border-color:var(--ink)}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn.primary:hover{filter:brightness(1.08)}
+.open-to{margin-top:26px;display:flex;align-items:center;gap:10px;font-size:.9rem;color:var(--ink-2)}
+.dot{width:9px;height:9px;border-radius:50%;background:#2DA86A;box-shadow:0 0 0 4px color-mix(in srgb,#2DA86A 22%,transparent)}
+
+/* the ledger: an ops-dashboard style fact sheet */
+.ledger{background:var(--ledger);color:var(--ledger-ink);border-radius:14px;padding:22px 22px 18px;font-family:var(--mono);font-size:.82rem;line-height:1.5;min-width:0}
+.ledger .hd{display:flex;justify-content:space-between;align-items:center;color:var(--ledger-dim);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;border-bottom:1px solid var(--ledger-line);padding-bottom:12px;margin-bottom:6px}
+.ledger .hd b{color:#7BE3A6;font-weight:500}
+.row{display:grid;grid-template-columns:118px minmax(0,1fr);gap:12px;padding:9px 0;border-bottom:1px solid var(--ledger-line)}
+.row:last-child{border-bottom:0}
+.row .k{color:var(--ledger-dim)}
+.row .v{color:var(--ledger-ink);font-variant-numeric:tabular-nums}
+.row .v big{font-family:var(--display);font-size:1.5rem;font-weight:700;line-height:1;display:block;margin-bottom:2px;letter-spacing:-0.01em}
+
+/* sections */
+section{padding-block:64px;border-top:1px solid var(--line)}
+.sec-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:end;margin-bottom:30px}
+.sec-head p{color:var(--ink-2);max-width:36rem}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.chip{font:500 .84rem var(--body);padding:7px 13px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink-2);cursor:pointer}
+.chip:hover{border-color:var(--ink-3);color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip .n{font-family:var(--mono);font-size:.7rem;margin-left:6px;opacity:.7}
+
+/* expertise */
+.areas{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.area{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:22px;display:flex;flex-direction:column;gap:12px;min-width:0;transition:border-color .15s,opacity .2s}
+.area.dim{opacity:.38}
+.area:hover{border-color:var(--accent)}
+.area .glyph{width:38px;height:38px;border-radius:9px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center}
+.area .glyph svg{width:20px;height:20px}
+.area p{color:var(--ink-2);font-size:.95rem}
+.proof{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;font-size:.9rem}
+.proof li{padding-left:16px;position:relative;color:var(--ink)}
+.proof li::before{content:"";position:absolute;left:0;top:.6em;width:7px;height:7px;border-radius:2px;background:var(--accent);transform:rotate(45deg)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
+.tag{font-family:var(--mono);font-size:.7rem;color:var(--ink-3);border:1px solid var(--line);border-radius:5px;padding:3px 7px}
+
+/* projects */
+.projects{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}
+.proj{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px 22px;display:flex;flex-direction:column;gap:10px;min-width:0;transition:border-color .15s}
+.proj:hover{border-color:var(--accent)}
+.proj.featured{grid-column:span 2}
+.proj .meta{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:.72rem;color:var(--ink-3)}
+.proj .meta .stars{color:var(--ink-2)}
+.proj h3 a{color:var(--ink)}
+.proj p{color:var(--ink-2);font-size:.95rem}
+.proj .how{font-size:.9rem;color:var(--ink)}
+.proj .links{display:flex;flex-wrap:wrap;gap:14px;font-size:.88rem;font-weight:500;margin-top:auto;padding-top:6px}
+.empty{color:var(--ink-3);padding:30px 0;font-size:.95rem}
+
+/* experience */
+.timeline{display:flex;flex-direction:column;gap:0}
+.job{display:grid;grid-template-columns:180px minmax(0,1fr);gap:24px;padding:28px 0;border-top:1px solid var(--line)}
+.job:first-child{border-top:0;padding-top:0}
+.job .when{font-family:var(--mono);font-size:.78rem;color:var(--ink-3);padding-top:6px}
+.job .when b{display:block;color:var(--ink);font-weight:500;font-size:.85rem}
+.job h3{font-size:1.3rem}
+.job .org{color:var(--ink-2);margin-top:4px}
+.job .sum{margin-top:12px;color:var(--ink-2)}
+.job ul{margin:14px 0 0;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+.job li{padding-left:18px;position:relative;font-size:.95rem}
+.job li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height:2px;background:var(--accent)}
+.job .note{margin-top:14px;font-size:.85rem;color:var(--ink-3)}
+.stack{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-top:36px}
+.stack div{border-top:2px solid var(--ink);padding-top:12px}
+.stack b{font-family:var(--display);font-weight:600;display:block;margin-bottom:6px}
+.stack span{display:block;font-size:.9rem;color:var(--ink-2)}
+
+/* resume */
+.resume{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:32px;display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:36px}
+.resume h3{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);font-weight:500;margin-bottom:10px}
+.resume .block + .block{margin-top:26px}
+.resume dl{margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 14px;font-size:.92rem}
+.resume dt{color:var(--ink-3)}
+.resume dd{margin:0;min-width:0;overflow-wrap:anywhere}
+.resume ul{margin:0;padding-left:18px;font-size:.95rem;display:flex;flex-direction:column;gap:6px}
+.side{display:flex;flex-direction:column;gap:14px}
+.side .box{border:1px solid var(--line);border-radius:10px;padding:16px;font-size:.9rem}
+.side .box b{display:block;font-family:var(--display);font-weight:600;margin-bottom:6px}
+.side code{font-family:var(--mono);font-size:.78rem;background:var(--accent-soft);padding:2px 6px;border-radius:4px;color:var(--ink)}
+
+/* writing + contact */
+.posts{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.post{border:1px solid var(--line);border-radius:10px;padding:16px 18px;background:var(--surface)}
+.post .eyebrow{margin-bottom:6px}
+.contact{background:var(--ledger);color:var(--ledger-ink);border-radius:16px;padding:40px;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:32px;align-items:center}
+.contact h2{color:var(--ledger-ink)}
+.contact p{color:var(--ledger-dim);margin-top:10px}
+.contact .links{display:flex;flex-direction:column;gap:10px;font-family:var(--mono);font-size:.88rem}
+.contact .links a{color:var(--ledger-ink);display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid var(--ledger-line);padding:9px 0}
+.contact .links a span:last-child{color:var(--ledger-dim)}
+.email{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:18px}
+.email code{font-family:var(--mono);font-size:1rem;color:var(--ledger-ink);user-select:all}
+.copy{font:500 .8rem var(--body);background:transparent;color:var(--ledger-ink);border:1px solid var(--ledger-line);border-radius:999px;padding:6px 12px;cursor:pointer}
+.copy:hover{border-color:var(--ledger-ink)}
+footer{padding-block:28px 40px;font-family:var(--mono);font-size:.74rem;color:var(--ink-3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+@media (max-width:860px){
+  .hero .wrap,.sec-head,.contact,.resume{grid-template-columns:minmax(0,1fr)}
+  .proj.featured{grid-column:auto}
+  .job{grid-template-columns:minmax(0,1fr);gap:8px}
+  .row{grid-template-columns:100px minmax(0,1fr)}
+  .brand small{display:none}
+  section{padding-block:48px}
+  .contact{padding:28px 22px}
+  .resume{padding:22px}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top">Oscar Nevarez <small>CDMX · UTC−6</small></a>
+    <nav aria-label="Sections">
+      <a href="#expertise">Expertise</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#resume">Resume</a>
+      <a href="#writing">Writing</a>
+      <a class="cta" href="#contact">Get in touch</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" style="border-top:0">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Engineering leader · AI agents in production · Mexico City</div>
+      <h1 style="margin-top:14px">I build the teams that put <em>AI agents</em> to work on real operations.</h1>
+      <p class="lede">Ex-CTO at Kamina GO (Grupo Traxión), where my team ran the technology behind 5,000+ logistics movements a day and shipped document intelligence, an internal AI agent and multi-tenant analytics into daily use. Twenty-plus years of hands-on engineering, now spent on MCP servers, computer-use and voice agents, Rust and Tauri, and on coaching the people who ship them.</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="#projects">See the work</a>
+        <a class="btn" href="#resume">Read the resume</a>
+        <a class="btn" href="https://www.linkedin.com/in/oscarnevarezleal" target="_blank" rel="noopener">LinkedIn ↗</a>
+      </div>
+      <div class="open-to"><span class="dot" aria-hidden="true"></span>Open to Head of AI, Director and Engineering Manager roles. Remote, or hybrid in Mexico City.</div>
+    </div>
+    <aside class="ledger" aria-label="At a glance">
+      <div class="hd"><span>At a glance</span><b>● available</b></div>
+      <div class="row"><span class="k">Scope led</span><span class="v"><big>5,000+</big>logistics movements/day on the platform at Kamina GO</span></div>
+      <div class="row"><span class="k">Experience</span><span class="v"><big>20+ yrs</big>engineer → architect → CTO</span></div>
+      <div class="row"><span class="k">Last role</span><span class="v">CTO, Kamina GO · Grupo Traxión<br>through Oct 2026</span></div>
+      <div class="row"><span class="k">In production</span><span class="v">AI document routing · internal LLM agent · multimodal evidence pipeline · multi-tenant analytics</span></div>
+      <div class="row"><span class="k">Hands-on now</span><span class="v">MCP servers · computer-use agents · voice agents · Rust / Tauri · Claude Code plugins</span></div>
+      <div class="row"><span class="k">Open source</span><span class="v">77 public repos · gh-cms 179★</span></div>
+      <div class="row"><span class="k">Languages</span><span class="v">Spanish (native) · English (professional)</span></div>
+    </aside>
+  </div>
+</section>
+
+<section id="expertise">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="eyebrow">By area of expertise</div><h2 style="margin-top:8px">Eight areas, each backed by something shipped.</h2></div>
+      <p>Pick an area to filter this section and the projects below. Every bullet is a thing a team of mine built or something I built myself, not a keyword.</p>
+    </div>
+    <div class="chips" id="chips" role="group" aria-label="Filter by area"></div>
+    <div class="areas" id="areas"></div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="eyebrow">Own projects</div><h2 style="margin-top:8px">Things I built on my own time.</h2></div>
+      <p>Public code on GitHub unless marked private. Newest first within the selected area.</p>
+    </div>
+    <div class="projects" id="projects"></div>
+    <p class="empty" id="projects-empty" hidden>No personal project in this area yet. The experience section has the production work.</p>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="eyebrow">Experience</div><h2 style="margin-top:8px">What I have led and what it moved.</h2></div>
+      <p>Where a result below was a team effort, I say so. Scale, model providers and cost numbers are available in conversation.</p>
+    </div>
+    <div class="timeline" id="timeline"></div>
+    <div class="stack" id="stack"></div>
+  </div>
+</section>
+
+<section id="resume">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="eyebrow">Resume</div><h2 style="margin-top:8px">The one-page version.</h2></div>
+      <p>The same facts as above in a form a recruiter can scan in a minute. A machine-readable copy sits next to this page for agents and ATS tools.</p>
+    </div>
+    <div class="resume">
+      <div id="resume-main"></div>
+      <div class="side">
+        <div class="box"><b>Target roles</b>Head of AI · Director of Engineering · Engineering Manager · Head of Engineering · Founding / Lead Agentic Engineer</div>
+        <div class="box"><b>Location &amp; setup</b>Mexico City (UTC−6). Remote across the Americas; hybrid in CDMX for Director-level roles.</div>
+        <div class="box"><b>Machine-readable</b>JSON Resume schema at <a href="resume.json" target="_blank" rel="noopener"><code>resume.json</code></a>, kept in sync with this page.</div>
+        <div class="box"><b>Contact</b><a href="#contact">oscar@onevarez.com</a><br><a href="https://www.linkedin.com/in/oscarnevarezleal" target="_blank" rel="noopener">linkedin.com/in/oscarnevarezleal</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="writing">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="eyebrow">Writing &amp; elsewhere</div><h2 style="margin-top:8px">Notes, talks and places I show up.</h2></div>
+    </div>
+    <div class="posts" id="posts"></div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact">
+      <div>
+        <div class="eyebrow" style="color:var(--ledger-dim)">Get in touch</div>
+        <h2 style="margin-top:8px">Hiring for an AI leadership role? Let's talk.</h2>
+        <p>Send the posting or a short note. I reply within a business day, in English or Spanish.</p>
+        <div class="email"><code id="email">oscar@onevarez.com</code><button class="copy" id="copy-email" type="button">Copy</button></div>
+      </div>
+      <div class="links" id="contact-links"></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="wrap">
+  <span>© <span id="year"></span> Oscar Nevarez · Mexico City</span>
+  <span id="updated"></span>
+</footer>
+
+<script>
+/* ============================================================
+   CONTENT. Edit this block to update the site; the page renders from it.
+   Areas are the filter keys. Projects and jobs reference them by id.
+   ============================================================ */
+const UPDATED = "2026-10-12";
+
+const AREAS = [
+  {id:"agents", name:"Agentic AI & LLM systems", icon:"agent",
+   blurb:"Agents that act inside real systems: tool use, MCP servers, computer use, voice, model routing and the evaluation and guardrails that keep them in production.",
+   proof:["Internal AI agent spanning datasets and APIs across several business areas, used through a simple Slack interface (team, Kamina GO)",
+          "Model-routing document pipelines that pick the extractor per layout and content (team, Kamina GO)",
+          "Hands-on with MCP servers, computer-use agents and voice agents; Claude Code plugins and skills in public repos"],
+   tags:["MCP","tool calling","computer use","voice agents","Bedrock","Claude","OpenAI","evals"]},
+  {id:"docs", name:"Document & multimodal intelligence", icon:"doc",
+   blurb:"Turning proof-of-delivery photos, invoices, audio and video into structured data that downstream systems can trust.",
+   proof:["Mobile proof-of-delivery capture, validation, OCR and AI contextual extraction, with exception handling (team, Kamina GO)",
+          "Custom POD and evidence routers handling varied document layouts through content extraction and model routing (team)",
+          "Multimedia evidence system taking audio, video and images, interpreting them with AI and producing several outputs for downstream systems (team)",
+          "Smart Document Router: serverless classify → extract → embed → route pipeline with RAG chat over 2,677 test PDFs (own)"],
+   tags:["OCR","Textract","pgvector","RAG","multimodal","extraction"]},
+  {id:"logistics", name:"Logistics & fintech workflows", icon:"truck",
+   blurb:"Execution systems for freight: dispatch, evidence, invoicing, reconciliation, marketplaces and the lending attached to them.",
+   proof:["Platform behind 5,000+ logistics movements a day at Kamina GO, part of Grupo Traxión",
+          "Invoice management, reconciliation and payment follow-up tied to delivery evidence (team)",
+          "Broker–shipper matching and brokerage connected to lending (team)"],
+   tags:["freight","POD","reconciliation","marketplace","lending","ops"]},
+  {id:"cloud", name:"Cloud & serverless platforms", icon:"cloud",
+   blurb:"AWS-first platform engineering: event-driven services, infrastructure as code, secure access and cost-aware design.",
+   proof:["Serverless document pipeline on Lambda, S3, DynamoDB, Bedrock and CDK, costed at about $40 a month for 5,000 documents (own)",
+          "AWS CDK and CloudFormation recipes: Fargate access through SSM and KMS, API Gateway with CORS and DynamoDB CRUD, CDK pipelines (own)",
+          "Buildpack and container toolchains for Laravel apps, from Docker Hub images to Vercel deploys (own, Laraboot)"],
+   tags:["AWS","CDK","Lambda","Fargate","GCP","Docker","buildpacks","Cloudflare Workers"]},
+  {id:"data", name:"Data platforms & analytics", icon:"chart",
+   blurb:"Multi-tenant reporting that operations people open every morning, and the data architecture under it.",
+   proof:["Custom multi-tenant dashboards and analytics on Athena and Metabase (team, Kamina GO)",
+          "Vector search on PostgreSQL + pgvector for document retrieval (own)",
+          "Data architecture consulting across 20+ years of client work"],
+   tags:["Athena","Metabase","PostgreSQL","pgvector","DynamoDB","multi-tenant"]},
+  {id:"devtools", name:"Developer tooling & automation", icon:"tool",
+   blurb:"Making engineers faster: CI as a product, agent-native tooling and small CLIs that remove a chore.",
+   proof:["gh-cms: a headless CMS built on GitHub Issues and Actions, 179 stars and 13 forks (own)",
+          "So Record: Claude Code plugin that turns Playwright sessions into cinematic videos, driven by two Rust binaries (own)",
+          "Muse: a Claude Code skill that reviews work through 17 distilled creative perspectives (own)",
+          "prrr: CLI that drafts pull requests with an LLM (own)"],
+   tags:["GitHub Actions","Claude Code","Playwright","CLI","Python","TypeScript"]},
+  {id:"native", name:"Native & systems", icon:"chip",
+   blurb:"Rust for the parts that must be fast and reliable, plus native shells where the experience lives on the device.",
+   proof:["Rust session engine and native video exporter behind So Record; Tauri desktop work (own)",
+          "iOS Live Activities demo: ActivityKit and WidgetKit on the Dynamic Island and Lock Screen (own)",
+          "Web terminal that keeps PTY processes alive and streams them to the browser over Socket.IO (own)"],
+   tags:["Rust","Tauri","Swift","ActivityKit","PTY","xterm.js"]},
+  {id:"leadership", name:"Engineering leadership", icon:"people",
+   blurb:"Owning technical direction and the people behind it: hiring, coaching, priorities and the consequential calls.",
+   proof:["CTO and Tech Lead Manager at Kamina GO, the technology arm of a Grupo Traxión logistics business",
+          "Built and coached the teams that shipped the AI systems listed here into daily operations",
+          "Mentor on Codementor; 100+ projects delivered as an independent consultant"],
+   tags:["hiring","coaching","roadmap","architecture","budget","stakeholders"]}
+];
+
+const PROJECTS = [
+  {name:"So Record", year:"2026", areas:["devtools","agents","native"], stars:null, featured:true,
+   url:"https://github.com/oscarnevarezleal/so-record-plugin",
+   what:"A Claude Code plugin that records a Playwright browser session driven by natural-language instructions and renders it as a cinematic video: auto-zoom on click clusters, injected cursor tracking, rounded corners, drop shadow, H.264 output.",
+   how:"Thin orchestration layer over two Rust binaries: so-engine-cli for session management, manifests and zoom computation, and native-export-cli for composition with AVFoundation. Hooks capture navigations, clicks and form fills.",
+   stack:"Rust · Playwright MCP · Claude Code hooks · Node.js · AVFoundation"},
+  {name:"Job pipeline (private)", year:"2026", areas:["agents","devtools","data"], stars:null, featured:true,
+   url:null,
+   what:"A daily GitHub Actions pipeline that harvests leadership roles from 8 job boards and about 455 company ATS boards, verifies every link is live with ATS APIs and Playwright, screens each posting with an LLM against explicit rules, and emails a digest. A Claude routine reviews the day's leads, learns taste from how they get sorted on a board, and widens the search on thin days.",
+   how:"Python harvesters per ATS (Greenhouse, Ashby, Lever, Workday and more), a rules module that is the single source of truth for every filter, a funnel dashboard, a Chrome extension plus Cloudflare Worker for sending postings in, and recruiter-InMail parsing from Gmail.",
+   stack:"Python · Playwright · GitHub Actions · Claude · Cloudflare Workers · artifact DB"},
+  {name:"Muse", year:"2026", areas:["agents","devtools"], stars:null,
+   url:"https://github.com/oscarnevarezleal/claude-muse-skill",
+   what:"A Claude Code skill that gives creative counsel by routing a problem through 17 distilled creative minds, from Rick Rubin to David Bowie. Commands to channel one voice, review a diff for thinking style, or play devil's advocate.",
+   how:"Interviews are transcribed and distilled into a catalog of identity, lens, principles and triggers; the skill matches the two or three most relevant and answers from their perspective. New minds are added with a distill command.",
+   stack:"Claude Code skills · Python · Markdown catalog"},
+  {name:"Dynamic Island delivery tracker", year:"2026", areas:["native"], stars:null,
+   url:"https://github.com/oscarnevarezleal/ios-dynamic-island",
+   what:"An iOS app that tracks a delivery through five stages on the Dynamic Island and Lock Screen, showing compact, expanded, minimal and lock-screen presentations of a Live Activity.",
+   how:"ActivityKit lifecycle manager in the app, shared ActivityAttributes model, WidgetKit extension for the island UI.",
+   stack:"Swift · ActivityKit · WidgetKit · iOS 17"},
+  {name:"q-web", year:"2026", areas:["devtools","native"], stars:null,
+   url:"https://github.com/oscarnevarezleal/q-web",
+   what:"A web interface for a terminal CLI that keeps PTY processes alive on the server and streams input and output to the browser, so an interactive CLI works from a phone.",
+   how:"Express and Socket.IO backend spawning PTYs per authenticated session; xterm.js front end with fit and web-links addons; Docker deploy.",
+   stack:"TypeScript · Node.js · Socket.IO · xterm.js · Docker"},
+  {name:"Smart Document Router", year:"2025", areas:["docs","agents","cloud","data"], stars:null, featured:true,
+   url:"https://github.com/oscarnevarezleal/sdr-rag-hackathon",
+   what:"Hackathon build of a serverless pipeline that classifies business documents, extracts vendor, invoice number, total and due date, embeds them, routes them to the right folder and team by email, and answers questions over them through a RAG chat API.",
+   how:"Upload through a Lambda URL to S3; S3 events trigger classification with Bedrock, extraction with Bedrock or Textract, Titan embeddings into PostgreSQL + pgvector, metadata to DynamoDB, notifications by SES. Five CDK stacks, Makefile, Postman collection and OpenAPI spec. Tested on 2,677 PDFs; about $40 a month at 5,000 documents.",
+   stack:"AWS Lambda · Bedrock · Textract · pgvector · DynamoDB · CDK"},
+  {name:"prrr", year:"2025", areas:["devtools","agents"], stars:null,
+   url:"https://github.com/oscarnevarezleal/prr",
+   what:"A small CLI that drafts a pull request description from the repository state, with a selectable tone.",
+   how:"Python package on PyPI; init once, then generate.",
+   stack:"Python · OpenAI API · Poetry"},
+  {name:"gh-cms", year:"2021–2024", areas:["devtools","cloud"], stars:179,
+   url:"https://github.com/oscarnevarezleal/gh-cms",
+   what:"A headless CMS where a GitHub Issue is the content entry point: open an issue, and a post is generated, built with Hugo and published to GitHub Pages by Actions. An optional ngrok workflow previews content before publishing.",
+   how:"Content is committed as Markdown on main; gh-pages holds the built site. The ngrok tunneling action is its own repo.",
+   stack:"GitHub Actions · Hugo · ngrok", demo:"https://oscarnevarezleal.github.io/gh-cms/"},
+  {name:"Laraboot", year:"2021–2023", areas:["cloud","devtools"], stars:null,
+   url:"https://github.com/oscarnevarezleal?tab=repositories&q=laraboot",
+   what:"A buildpack-based toolchain for bootstrapping Laravel applications: starter-kit and model buildpacks, Rector upgrades, TypeScript build tasks, a Laravel installer Action and a deploy-to-Vercel demo, with images on Docker Hub.",
+   how:"Cloud Native Buildpacks written in Go, GitHub Actions for the workflow, articles on Medium documenting each piece.",
+   stack:"Go · Buildpacks · PHP · GitHub Actions · Docker"},
+  {name:"AWS infrastructure recipes", year:"2019–2022", areas:["cloud"], stars:null,
+   url:"https://github.com/oscarnevarezleal?tab=repositories&q=cdk",
+   what:"A set of small, runnable proofs of concept: Fargate access through SSM with KMS keys, API Gateway with CORS and Lambda CRUD on DynamoDB, CDK pipelines, an ECS cluster in CloudFormation, Amazon IVS and Chime demos in React.",
+   how:"Each repo is one idea, deployable with a single CDK or CloudFormation command.",
+   stack:"AWS CDK · CloudFormation · TypeScript · React"},
+  {name:"E-commerce crawler", year:"2019", areas:["cloud","data"], stars:5,
+   url:"https://github.com/oscarnevarezleal/ecommerce-crawler",
+   what:"A parallel e-commerce crawler running Puppeteer workers in Docker on Google Cloud.",
+   how:"Containerised headless Chrome workers fanned out across GCP.",
+   stack:"JavaScript · Puppeteer · Docker · GCP"}
+];
+
+const JOBS = [
+  {title:"CTO · Tech Lead Manager", org:"Kamina GO, part of Grupo Traxión", place:"Mexico City", when:"to Oct 2026", whenNote:"",
+   sum:"Led technology for a freight marketplace and execution platform inside one of Mexico's largest logistics and mobility groups, running 5,000+ logistics movements a day. Owned architecture, priorities and the engineering team.",
+   bullets:[
+     "Led the team that built mobile proof-of-delivery capture with validation, OCR and AI contextual extraction, exception handling, invoice management and reconciliation, and payment follow-up.",
+     "Shipped custom POD and evidence routers that handle varied document layouts through content extraction and per-document model routing.",
+     "Delivered a multimedia evidence management system that accepts audio, video and images, interprets them with AI and feeds several downstream systems.",
+     "Built an internal AI agent spanning datasets and APIs across business areas, used by the company through a simple Slack interface.",
+     "Stood up multi-tenant dashboards and analytics on Athena and Metabase for operations and customers.",
+     "Oversaw broker–shipper matching and the brokerage flows connected to lending."
+   ],
+   note:"These are team achievements led as CTO. Volumes, model providers, latency and cost figures are shared in conversation."},
+  {title:"Independent consultant · Software engineer, data architect, AI specialist", org:"ONE VAREZ (onevarez.com)", place:"Mexico City · remote", when:"20+ years",
+   sum:"Software development, data architecture and AI solutions for clients, 100+ projects delivered. Cloud and serverless architecture on AWS and GCP, PHP and Laravel platforms, Node and TypeScript services, data pipelines.",
+   bullets:[
+     "Designed and shipped serverless and container platforms with infrastructure as code (CDK, CloudFormation, buildpacks).",
+     "Built data and document pipelines, from crawlers to extraction and analytics.",
+     "Open-source maintainer: gh-cms (179 stars), Laraboot toolchain, GitHub Actions and Claude Code plugins.",
+     "Mentor on Codementor, pairing with engineers on architecture and cloud problems."
+   ]}
+];
+
+const STACK = [
+  {k:"AI & agents", v:"Claude, OpenAI, Bedrock · MCP servers · computer use · voice agents · RAG with pgvector · model routing · evals"},
+  {k:"Languages", v:"Python · TypeScript / Node · Rust · Go · PHP · Swift"},
+  {k:"Cloud", v:"AWS (Lambda, Fargate, S3, DynamoDB, Athena, CDK) · GCP · Cloudflare Workers · Docker · buildpacks"},
+  {k:"Data", v:"PostgreSQL · DynamoDB · Athena · Metabase · pgvector"},
+  {k:"Product surfaces", v:"Mobile capture apps · Slack bots · Tauri desktop · iOS Live Activities · web"},
+  {k:"Ways of working", v:"Architect first, then ship small · hiring and coaching · roadmaps tied to operating metrics"}
+];
+
+const POSTS = [
+  {kind:"Medium", title:"Oscar's Medium: Laraboot, buildpacks and cloud notes", url:"https://oscar-nevarez.medium.com/", note:"Articles on specialization in software and a series on the Laraboot buildpack toolchain."},
+  {kind:"GitHub", title:"77 public repositories", url:"https://github.com/oscarnevarezleal", note:"Agent tooling, AWS recipes, buildpacks and demos. Pair Extraordinaire ×4, Pull Shark ×4."},
+  {kind:"Codementor", title:"Mentoring on Codementor", url:"https://www.codementor.io/@fuwire", note:"Pairing sessions on architecture, cloud and AI integration."},
+  {kind:"Demo", title:"gh-cms live site", url:"https://oscarnevarezleal.github.io/gh-cms/", note:"The headless CMS publishing itself from GitHub Issues."}
+];
+
+const LINKS = [
+  {label:"Email", value:"oscar@onevarez.com", url:"mailto:oscar@onevarez.com"},
+  {label:"LinkedIn", value:"in/oscarnevarezleal", url:"https://www.linkedin.com/in/oscarnevarezleal"},
+  {label:"GitHub", value:"oscarnevarezleal", url:"https://github.com/oscarnevarezleal"},
+  {label:"Medium", value:"oscar-nevarez", url:"https://oscar-nevarez.medium.com/"},
+  {label:"X", value:"@wownevarez", url:"https://x.com/wownevarez"},
+  {label:"Site", value:"onevarez.com", url:"https://onevarez.com"}
+];
+
+/* ============================================================ rendering */
+const ICONS = {
+  agent:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="16" height="12" rx="3"/><path d="M12 3v4M8 12h.01M16 12h.01M9 16h6"/></svg>',
+  doc:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></svg>',
+  truck:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg>',
+  cloud:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a4 4 0 0 1-.6-7.95A6 6 0 0 1 18 9a4.5 4.5 0 0 1-.5 9z"/></svg>',
+  chart:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16M7 16v-5M12 16V7M17 16v-9"/></svg>',
+  tool:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5a4 4 0 0 0 4.9 4.9L21 12l-9 9-3-3 6.6-6.6"/><path d="M3 3l6 6"/></svg>',
+  chip:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="2"/><path d="M10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4"/></svg>',
+  people:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="10" r="2.5"/><path d="M3 20a6 6 0 0 1 12 0M15 20a5 5 0 0 1 6-4"/></svg>'
+};
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const byId = Object.fromEntries(AREAS.map(a => [a.id, a]));
+let active = "all";
+
+function renderChips(){
+  const counts = {};
+  PROJECTS.forEach(p => p.areas.forEach(a => counts[a] = (counts[a]||0)+1));
+  const el = document.getElementById("chips");
+  el.innerHTML = [`<button class="chip" type="button" data-area="all" aria-pressed="${active==="all"}">All areas</button>`]
+    .concat(AREAS.map(a => `<button class="chip" type="button" data-area="${a.id}" aria-pressed="${active===a.id}">${esc(a.name)}<span class="n">${counts[a.id]||0}</span></button>`)).join("");
+  el.querySelectorAll(".chip").forEach(b => b.addEventListener("click", () => setArea(b.dataset.area)));
+}
+function renderAreas(){
+  document.getElementById("areas").innerHTML = AREAS.map(a => `
+    <article class="area${active!=="all" && active!==a.id ? " dim":""}" id="area-${a.id}">
+      <div class="glyph" aria-hidden="true">${ICONS[a.icon]}</div>
+      <h3>${esc(a.name)}</h3>
+      <p>${esc(a.blurb)}</p>
+      <ul class="proof">${a.proof.map(x => `<li>${esc(x)}</li>`).join("")}</ul>
+      <div class="tags">${a.tags.map(t => `<span class="tag">${esc(t)}</span>`).join("")}</div>
+    </article>`).join("");
+}
+function renderProjects(){
+  const list = PROJECTS.filter(p => active==="all" || p.areas.includes(active));
+  document.getElementById("projects-empty").hidden = list.length>0;
+  document.getElementById("projects").innerHTML = list.map(p => `
+    <article class="proj${p.featured && active==="all" ? " featured":""}">
+      <div class="meta"><span>${esc(p.year)}</span>${p.stars ? `<span class="stars">★ ${p.stars}</span>`:""}<span>${p.areas.map(a => esc(byId[a].name)).join(" · ")}</span></div>
+      <h3>${p.url ? `<a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.name)}</a>` : esc(p.name)}</h3>
+      <p>${esc(p.what)}</p>
+      <p class="how">${esc(p.how)}</p>
+      <div class="tags">${p.stack.split(" · ").map(t => `<span class="tag">${esc(t)}</span>`).join("")}</div>
+      <div class="links">${p.url ? `<a href="${esc(p.url)}" target="_blank" rel="noopener">Code ↗</a>`:`<span style="color:var(--ink-3)">Private repository · walkthrough on request</span>`}${p.demo ? `<a href="${esc(p.demo)}" target="_blank" rel="noopener">Live demo ↗</a>`:""}</div>
+    </article>`).join("");
+}
+function setArea(id){
+  active = id;
+  try{ localStorage.setItem("area", id); }catch(e){}
+  renderChips(); renderAreas(); renderProjects();
+}
+function renderJobs(){
+  document.getElementById("timeline").innerHTML = JOBS.map(j => `
+    <article class="job">
+      <div class="when"><b>${esc(j.when)}</b>${esc(j.place)}</div>
+      <div>
+        <h3>${esc(j.title)}</h3>
+        <div class="org">${esc(j.org)}</div>
+        <p class="sum">${esc(j.sum)}</p>
+        <ul>${j.bullets.map(b => `<li>${esc(b)}</li>`).join("")}</ul>
+        ${j.note ? `<p class="note">${esc(j.note)}</p>`:""}
+      </div>
+    </article>`).join("");
+  document.getElementById("stack").innerHTML = STACK.map(s => `<div><b>${esc(s.k)}</b><span>${esc(s.v)}</span></div>`).join("");
+}
+function renderResume(){
+  const m = document.getElementById("resume-main");
+  m.innerHTML = `
+    <div class="block">
+      <h3>Summary</h3>
+      <p>Engineering leader with 20+ years of hands-on work and a CTO tenure at Kamina GO (Grupo Traxión), where the team shipped AI document intelligence, an internal LLM agent and multi-tenant analytics into daily operations at 5,000+ movements a day. Builds with MCP servers, computer-use and voice agents, Rust and Tauri. Looking to lead an AI engineering organisation.</p>
+    </div>
+    <div class="block">
+      <h3>Experience</h3>
+      <ul>${JOBS.map(j => `<li><b>${esc(j.title)}</b>, ${esc(j.org)} · ${esc(j.when)}. ${esc(j.sum)}</li>`).join("")}</ul>
+    </div>
+    <div class="block">
+      <h3>Selected results</h3>
+      <ul>
+        <li>AI proof-of-delivery and evidence pipeline: capture, OCR and contextual extraction, per-document model routing, exception handling, reconciliation and payment follow-up.</li>
+        <li>Internal AI agent over company datasets and APIs with a Slack interface, used across business areas.</li>
+        <li>Multimedia evidence system (audio, video, images) producing structured outputs for downstream systems.</li>
+        <li>Multi-tenant analytics on Athena and Metabase for operations and customers.</li>
+        <li>Open source: gh-cms (179 stars), So Record, Muse, Smart Document Router, Laraboot.</li>
+      </ul>
+    </div>
+    <div class="block">
+      <h3>Skills</h3>
+      <dl>${STACK.map(s => `<dt>${esc(s.k)}</dt><dd>${esc(s.v)}</dd>`).join("")}</dl>
+    </div>
+    <div class="block">
+      <h3>Languages</h3>
+      <dl><dt>Spanish</dt><dd>Native</dd><dt>English</dt><dd>Professional working proficiency</dd></dl>
+    </div>`;
+}
+function renderPosts(){
+  document.getElementById("posts").innerHTML = POSTS.map(p => `
+    <a class="post" href="${esc(p.url)}" target="_blank" rel="noopener" style="color:inherit">
+      <div class="eyebrow">${esc(p.kind)}</div>
+      <h3 style="font-size:1rem">${esc(p.title)} ↗</h3>
+      <p style="color:var(--ink-2);font-size:.88rem;margin-top:6px">${esc(p.note)}</p>
+    </a>`).join("");
+  document.getElementById("contact-links").innerHTML = LINKS.map(l => `<a href="${esc(l.url)}" ${l.url.startsWith("http")?'target="_blank" rel="noopener"':""}><span>${esc(l.label)}</span><span>${esc(l.value)}</span></a>`).join("");
+}
+
+document.getElementById("copy-email").addEventListener("click", function(){
+  const btn = this, text = document.getElementById("email").textContent;
+  const done = () => { btn.textContent = "Copied"; setTimeout(() => btn.textContent = "Copy", 1600); };
+  const fallback = () => { const r = document.createRange(); r.selectNodeContents(document.getElementById("email")); const s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = "Selected"; setTimeout(() => btn.textContent = "Copy", 1600); };
+  try { navigator.clipboard.writeText(text).then(done, fallback); } catch(e){ fallback(); }
+});
+
+document.getElementById("year").textContent = new Date().getFullYear();
+document.getElementById("updated").textContent = "Updated " + UPDATED;
+try{ const s = localStorage.getItem("area"); if (s && (s==="all" || byId[s])) active = s; }catch(e){}
+const hash = location.hash.replace("#","");
+if (byId[hash]) active = hash;
+renderChips(); renderAreas(); renderProjects(); renderJobs(); renderResume(); renderPosts();
+</script>
+</body>
+</html>
