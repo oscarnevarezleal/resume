@@ -324,11 +324,12 @@ const UPDATED = "2026-10-13";
 
 const AREAS = [
   {id:"agents", name:"Agentic AI & LLM systems", icon:"agent",
-   blurb:"Agents that act inside real systems: tool use, MCP servers, computer use, voice, model routing and the evaluation and guardrails that keep them in production.",
+   blurb:"Agent development end to end: tool use, MCP servers, computer use, voice, model routing, harnesses and hooks, and the evaluation and guardrails that keep agents in production.",
    proof:["Internal AI agent spanning datasets and APIs across several business areas, used through a simple Slack interface (team, Kamina GO)",
           "Model-routing document pipelines that pick the extractor per layout and content (team, Kamina GO)",
-          "Hands-on with MCP servers, computer-use agents and voice agents; Claude Code plugins and skills in public repos"],
-   tags:["MCP","tool calling","computer use","voice agents","Bedrock","Claude","OpenAI","evals"]},
+          "Agent development with Claude Code and the Claude API: plugins, skills and hooks (So Record), plus a daily autonomous routine that harvests, screens and reports job leads from eight boards and hundreds of ATS feeds (own)",
+          "Hands-on with MCP servers, computer-use agents and voice agents"],
+   tags:["agent development","MCP","tool calling","computer use","voice agents","harnesses","Claude","Bedrock","OpenAI","evals"]},
   {id:"docs", name:"Document & multimodal intelligence", icon:"doc",
    blurb:"Turning proof-of-delivery photos, invoices, audio and video into structured data that downstream systems can trust.",
    proof:["Mobile proof-of-delivery capture, validation, OCR and AI contextual extraction, with exception handling (team, Kamina GO)",
@@ -438,7 +439,7 @@ const JOBS = [
 ];
 
 const STACK = [
-  {k:"AI & agents", v:"Claude, OpenAI, Bedrock · MCP servers · computer use · voice agents · RAG with pgvector · model routing · evals"},
+  {k:"AI & agents", v:"Agent development (Claude Code plugins, hooks, routines; Claude API) · MCP servers · computer use · voice agents · RAG with pgvector · model routing · evals · Claude, OpenAI, Bedrock"},
   {k:"Languages", v:"Python · TypeScript / Node · Rust · Go · PHP · Swift"},
   {k:"Cloud", v:"AWS (Lambda, Fargate, S3, DynamoDB, Athena, CDK) · GCP · Cloudflare Workers · Docker · buildpacks"},
   {k:"Data", v:"PostgreSQL · DynamoDB · Athena · Metabase · pgvector"},

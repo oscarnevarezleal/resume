@@ -156,16 +156,19 @@
     {
       "name": "AI & agents",
       "keywords": [
-        "Claude",
-        "OpenAI",
-        "Bedrock",
+        "agent development",
+        "Claude Code plugins and hooks",
+        "Claude API",
         "MCP servers",
         "computer use",
         "voice agents",
         "RAG",
         "pgvector",
         "model routing",
-        "evals"
+        "evals",
+        "Claude",
+        "OpenAI",
+        "Bedrock"
       ]
     },
     {
