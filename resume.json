@@ -2,10 +2,10 @@
   "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
   "basics": {
     "name": "Oscar Nevarez",
-    "label": "Engineering leader · AI agents in production · ex-CTO, Kamina GO (Grupo Traxión)",
+    "label": "Engineering leader · AI agents in production · ex-CTO (Prixz), Tech Lead Manager at Kamina GO (Grupo Traxión)",
     "email": "oscar@onevarez.com",
     "url": "https://onevarez.com",
-    "summary": "Engineering leader with 20+ years of hands-on work and a CTO tenure at Kamina GO (Grupo Traxión), where the team shipped AI document intelligence, an internal LLM agent and multi-tenant analytics into daily operations at 5,000+ logistics movements a day. Builds with MCP servers, computer-use and voice agents, Rust and Tauri. Looking to lead an AI engineering organisation: Head of AI, Director of Engineering or Engineering Manager, remote across the Americas or hybrid in Mexico City.",
+    "summary": "Engineering leader with 20+ years of hands-on work and a CTO tenure at Prixz (Mexico's first native online pharmacy) and, most recently, Tech Lead Manager at Kamina GO (Grupo Traxión), where the team shipped AI document intelligence, an internal LLM agent and multi-tenant analytics into daily operations at 5,000+ logistics movements a day. Builds with MCP servers, computer-use and voice agents, Rust and Tauri. Looking to lead an AI engineering organisation: Head of AI, Director of Engineering or Engineering Manager, remote across the Americas or hybrid in Mexico City.",
     "location": {
       "city": "Mexico City",
       "countryCode": "MX",
@@ -47,7 +47,7 @@
   "work": [
     {
       "name": "Kamina GO (Grupo Traxión)",
-      "position": "CTO · Tech Lead Manager",
+      "position": "Tech Lead Manager",
       "location": "Mexico City",
       "endDate": "2026-10",
       "summary": "Led technology for a freight marketplace and execution platform inside one of Mexico's largest logistics and mobility groups, running 5,000+ logistics movements a day. Owned architecture, priorities and the engineering team.",
@@ -58,6 +58,16 @@
         "Internal AI agent spanning datasets and APIs across business areas, used through a simple Slack interface.",
         "Multi-tenant dashboards and analytics on Athena and Metabase.",
         "Broker–shipper matching and brokerage flows connected to lending."
+      ]
+    },
+    {
+      "name": "Prixz",
+      "position": "CTO",
+      "location": "Mexico City",
+      "summary": "Chief Technology Officer at Mexico's first native online pharmacy: no physical stores, dark-store fulfilment, own site and app plus Amazon and Mercado Libre storefronts, grown out of a last-mile delivery operation. Owned the technology organisation and platform.",
+      "highlights": [
+        "Led engineering for a healthtech e-commerce and delivery business during its growth from last-mile provider to digital pharmacy.",
+        "Owned architecture, platform and hiring decisions as the company's senior technology leader."
       ]
     },
     {
