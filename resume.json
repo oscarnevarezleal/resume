@@ -259,5 +259,14 @@
   "meta": {
     "version": "2026-10-13",
     "canonical": "https://github.com/oscarnevarezleal/resume"
-  }
+  },
+  "publications": [
+    {
+      "name": "Decoupling Monoliths With Container Orchestration and Feature Flags",
+      "publisher": "LaunchDarkly blog",
+      "releaseDate": "2022-07-19",
+      "url": "https://launchdarkly.com/blog/decoupling-monoliths-with-container-orchestration-and-feature-flags/",
+      "summary": "Migration patterns for breaking a monolith into services (strangler fig, branch by abstraction, change data capture, decorating collaborator) with feature flags to release each step incrementally on a container orchestration platform."
+    }
+  ]
 }

@@ -200,7 +200,7 @@ footer{padding-block:28px 40px;font-family:var(--mono);font-size:.74rem;color:va
       <a href="#projects">Projects</a>
       <a href="#experience">Experience</a>
       <a href="#resume">Resume</a>
-      <a href="#writing">Writing</a>
+      <a href="#writing">Publications</a>
       <a class="cta" href="#contact">Get in touch</a>
     </nav>
   </div>
@@ -289,7 +289,7 @@ footer{padding-block:28px 40px;font-family:var(--mono);font-size:.74rem;color:va
 <section id="writing">
   <div class="wrap">
     <div class="sec-head">
-      <div><div class="eyebrow">Writing &amp; elsewhere</div><h2 style="margin-top:8px">Notes, talks and places I show up.</h2></div>
+      <div><div class="eyebrow">Publications &amp; elsewhere</div><h2 style="margin-top:8px">Published writing and places I show up.</h2></div>
     </div>
     <div class="posts" id="posts"></div>
   </div>
@@ -463,6 +463,7 @@ const STACK = [
 ];
 
 const POSTS = [
+  {kind:"Article · LaunchDarkly · July 2022", title:"Decoupling Monoliths With Container Orchestration and Feature Flags", url:"https://launchdarkly.com/blog/decoupling-monoliths-with-container-orchestration-and-feature-flags/", note:"Migration patterns for breaking a monolith apart (strangler fig, branch by abstraction, change data capture) with feature flags to ship each step safely on a container orchestration platform."},
   {kind:"Product", title:"Nullcolor", url:"https://nullcolor.app", note:"Screen and webcam capture with a built-in editor. Native on macOS and Windows; free for individuals."},
   {kind:"Medium", title:"Oscar's Medium: Laraboot, buildpacks and cloud notes", url:"https://oscar-nevarez.medium.com/", note:"Articles on specialization in software and a series on the Laraboot buildpack toolchain."},
   {kind:"GitHub", title:"77 public repositories", url:"https://github.com/oscarnevarezleal", note:"Agent tooling, AWS recipes, buildpacks and demos. Pair Extraordinaire ×4, Pull Shark ×4."},
@@ -570,6 +571,10 @@ function renderResume(){
     <div class="block">
       <h3>Skills</h3>
       <dl>${STACK.map(s => `<dt>${esc(s.k)}</dt><dd>${esc(s.v)}</dd>`).join("")}</dl>
+    </div>
+    <div class="block">
+      <h3>Publications</h3>
+      <ul><li><a href="https://launchdarkly.com/blog/decoupling-monoliths-with-container-orchestration-and-feature-flags/" target="_blank" rel="noopener">Decoupling Monoliths With Container Orchestration and Feature Flags</a>, LaunchDarkly blog, July 2022.</li></ul>
     </div>
     <div class="block">
       <h3>Languages</h3>
