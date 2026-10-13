@@ -228,7 +228,7 @@ footer{padding-block:28px 40px;font-family:var(--mono);font-size:.74rem;color:va
       <div class="row"><span class="k">Earlier</span><span class="v">CTO, Prixz · Mexican digital pharmacy</span></div>
       <div class="row"><span class="k">In production</span><span class="v">AI document routing · internal LLM agent · multimodal evidence pipeline · multi-tenant analytics</span></div>
       <div class="row"><span class="k">Hands-on now</span><span class="v">MCP servers · computer-use agents · voice agents · Rust / Tauri · Claude Code plugins</span></div>
-      <div class="row"><span class="k">Product</span><span class="v"><a href="https://nullcolor.app" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px">Nullcolor</a>: native screen + webcam recorder with a built-in editor, macOS and Windows</span></div>
+      <div class="row"><span class="k">Product</span><span class="v"><a href="https://nullcolor.app" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px">Nullcolor</a>: native screen + webcam recorder with a built-in editor, macOS and Windows, on the open-source Kineto engine</span></div>
       <div class="row"><span class="k">Open source</span><span class="v">77 public repos · gh-cms 179★</span></div>
       <div class="row"><span class="k">Languages</span><span class="v">Spanish (native) · English (professional)</span></div>
     </aside>
@@ -364,7 +364,7 @@ const AREAS = [
   {id:"native", name:"Native & systems", icon:"chip",
    blurb:"Rust for the parts that must be fast and reliable, plus native shells where the experience lives on the device.",
    proof:["Nullcolor: native macOS and Windows app that captures screen and webcam together, edits and exports 4K/60 (own product)",
-          "Kineto: cross-platform Rust video composition engine on static FFmpeg and libx264/x265, with a per-frame RGBA pipeline and eased auto-zoom (own)",
+          "Kineto: the Rust composition engine inside Nullcolor, open-sourced as a cross-platform binary on static FFmpeg and libx264/x265 (own)",
           "Rust session engine and native video exporter behind So Record; Tauri desktop work (own)"],
    tags:["Rust","Tauri","FFmpeg","libx264","AVFoundation","CLI"]},
   {id:"leadership", name:"Engineering leadership", icon:"people",
@@ -378,24 +378,19 @@ const AREAS = [
 const PROJECTS = [
   {name:"Nullcolor", year:"2026", areas:["native","devtools"], stars:null, featured:true,
    url:"https://nullcolor.app",
-   what:"A native desktop app that records screen and webcam together in one take, then trims, cuts, adds transitions, fixes audio and exports 4K/60 MP4 without leaving the app. Every recording lands in a searchable library you can re-edit later. Free for individuals; commercial licence at $99.",
-   how:"Shipped as a product, not a repo: macOS on Apple Silicon and Windows x64 builds, a pricing page, a blog and a release cadence (v0.10.0 in April 2026). One-click capture with no setup is the whole pitch, so most of the work is in the capture engine and the editor's responsiveness.",
-   stack:"Native desktop · macOS (Apple Silicon) · Windows x64 · 4K/60 capture · MP4 export", demo:"https://nullcolor.app/download"},
+   what:"A native desktop app that records screen and webcam together in one take, then trims, cuts, adds transitions, fixes audio and exports 4K/60 MP4 without leaving the app. Every recording lands in a searchable library you can re-edit later. Free for individuals; commercial licence at $99. Kineto, below, is the composition engine inside it.",
+   how:"Shipped as a product, not a repo: macOS on Apple Silicon and Windows x64 builds, a pricing page, a blog and a release cadence (v0.10.0 in April 2026). One-click capture with no setup is the whole pitch, so most of the work is in the capture engine and the editor's responsiveness. The cinematic export runs on Kineto, the open-source Rust engine published separately.",
+   stack:"Native desktop · Rust · Kineto engine · macOS (Apple Silicon) · Windows x64 · 4K/60 · MP4", demo:"https://nullcolor.app/download"},
   {name:"Kineto", year:"2026", areas:["native","devtools"], stars:null, featured:true,
    url:"https://github.com/onevarez/kineto-engine",
-   what:"A cross-platform engine that turns a plain screen recording into a cinematic one: background colour and padding, anti-aliased rounded corners, drop shadow, and smooth auto-zoom with four easing curves (smooth, snappy, cinematic, spring). One static binary for macOS, Linux and Windows, no runtime dependencies. The same treatment So Record applies on macOS, available everywhere.",
+   what:"A cross-platform engine that turns a plain screen recording into a cinematic one: background colour and padding, anti-aliased rounded corners, drop shadow, and smooth auto-zoom with four easing curves (smooth, snappy, cinematic, spring). One static binary for macOS, Linux and Windows, no runtime dependencies. It is the engine inside Nullcolor, open-sourced so the same treatment is available from any pipeline.",
    how:"Rust with FFmpeg linked statically for decoding (H.264, VP8) and libx264/libx265 for encoding. Each frame is Lanczos-scaled, composited in RGBA (background, shadow, video, corner mask), cropped and scaled per frame for zoom from a JSON segment file, then converted to YUV420P and encoded with CRF control. The shadow is rendered at quarter resolution, blurred and upscaled to keep 4K fast.",
    stack:"Rust · FFmpeg (static) · libx264 · libx265 · Lanczos · GPL-2.0"},
   {name:"So Record", year:"2026", areas:["devtools","agents","native"], stars:null, featured:true,
    url:"https://github.com/oscarnevarezleal/so-record-plugin",
-   what:"A Claude Code plugin that records a Playwright browser session driven by natural-language instructions and renders it as a cinematic video: auto-zoom on click clusters, injected cursor tracking, rounded corners, drop shadow, H.264 output.",
+   what:"A Claude Code plugin that records a Playwright browser session driven by natural-language instructions and renders it as a cinematic video: auto-zoom on click clusters, injected cursor tracking, rounded corners, drop shadow, H.264 output. The agent-driven front end of the same recording stack as Nullcolor and Kineto.",
    how:"Thin orchestration layer over two Rust binaries: so-engine-cli for session management, manifests and zoom computation, and native-export-cli for composition with AVFoundation. Hooks capture navigations, clicks and form fills.",
    stack:"Rust · Playwright MCP · Claude Code hooks · Node.js · AVFoundation"},
-  {name:"Job pipeline (private)", year:"2026", areas:["agents","devtools","data"], stars:null, featured:true,
-   url:null,
-   what:"A daily GitHub Actions pipeline that harvests leadership roles from 8 job boards and about 455 company ATS boards, verifies every link is live with ATS APIs and Playwright, screens each posting with an LLM against explicit rules, and emails a digest. A Claude routine reviews the day's leads, learns taste from how they get sorted on a board, and widens the search on thin days.",
-   how:"Python harvesters per ATS (Greenhouse, Ashby, Lever, Workday and more), a rules module that is the single source of truth for every filter, a funnel dashboard, a Chrome extension plus Cloudflare Worker for sending postings in, and recruiter-InMail parsing from Gmail.",
-   stack:"Python · Playwright · GitHub Actions · Claude · Cloudflare Workers · artifact DB"},
   {name:"Smart Document Router", year:"2025", areas:["docs","agents","cloud","data"], stars:null, featured:true,
    url:"https://github.com/oscarnevarezleal/sdr-rag-hackathon",
    what:"Hackathon build of a serverless pipeline that classifies business documents, extracts vendor, invoice number, total and due date, embeds them, routes them to the right folder and team by email, and answers questions over them through a RAG chat API.",
@@ -553,7 +548,7 @@ function renderResume(){
         <li>Internal AI agent over company datasets and APIs with a Slack interface, used across business areas.</li>
         <li>Multimedia evidence system (audio, video, images) producing structured outputs for downstream systems.</li>
         <li>Multi-tenant analytics on Athena and Metabase for operations and customers.</li>
-        <li>Product: Nullcolor, a native macOS and Windows screen and webcam recorder with a built-in editor (free for individuals, commercial licence).</li>
+        <li>Product: Nullcolor, a native macOS and Windows screen and webcam recorder with a built-in editor, running on Kineto, the open-source Rust composition engine I also publish (free for individuals, commercial licence).</li>
         <li>Open source: gh-cms (179 stars), Kineto, So Record, Smart Document Router, Laraboot.</li>
       </ul>
     </div>

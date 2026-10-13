@@ -87,7 +87,7 @@
   "projects": [
     {
       "name": "Nullcolor",
-      "description": "Native macOS and Windows app that records screen and webcam together, with a built-in editor, 4K/60 MP4 export and a searchable recording library. Free for individuals; $99 commercial licence.",
+      "description": "Native macOS and Windows app that records screen and webcam together, with a built-in editor, 4K/60 MP4 export and a searchable recording library. Free for individuals; $99 commercial licence. Runs on Kineto, the open-source Rust composition engine.",
       "url": "https://nullcolor.app",
       "keywords": [
         "native desktop",
@@ -99,7 +99,7 @@
     },
     {
       "name": "Kineto",
-      "description": "Cross-platform Rust engine that gives a screen recording a cinematic composition: background, padding, rounded corners, shadow and eased auto-zoom. Single static binary for macOS, Linux and Windows on FFmpeg, libx264 and libx265.",
+      "description": "The composition engine inside Nullcolor, open-sourced: a cross-platform Rust binary that gives a screen recording a cinematic treatment (background, padding, rounded corners, shadow, eased auto-zoom) on static FFmpeg, libx264 and libx265.",
       "url": "https://github.com/onevarez/kineto-engine",
       "keywords": [
         "Rust",
@@ -149,16 +149,6 @@
         "Go",
         "Buildpacks",
         "PHP"
-      ]
-    },
-    {
-      "name": "Job pipeline (private)",
-      "description": "Daily pipeline that harvests leadership roles from 8 boards and ~455 ATS boards, verifies links, screens with an LLM and emails a digest; a Claude routine reviews and learns taste.",
-      "keywords": [
-        "Python",
-        "Playwright",
-        "GitHub Actions",
-        "Claude"
       ]
     }
   ],
