@@ -212,7 +212,7 @@ footer{padding-block:28px 40px;font-family:var(--mono);font-size:.74rem;color:va
     <div>
       <div class="eyebrow">Engineering leader · AI agents in production · Mexico City</div>
       <h1 style="margin-top:14px">I build the teams that put <em>AI agents</em> to work on real operations.</h1>
-      <p class="lede">Ex-CTO at Kamina GO (Grupo Traxión), where my team ran the technology behind 5,000+ logistics movements a day and shipped document intelligence, an internal AI agent and multi-tenant analytics into daily use. Twenty-plus years of hands-on engineering, now spent on MCP servers, computer-use and voice agents, Rust and Tauri, and on coaching the people who ship them.</p>
+      <p class="lede">Ex-CTO at Kamina GO (Grupo Traxión), where my team ran the technology behind 5,000+ logistics movements a day and shipped document intelligence, an internal AI agent and multi-tenant analytics into daily use. Twenty-plus years of hands-on engineering, now spent on MCP servers, computer-use and voice agents, Rust and Tauri, on shipping Nullcolor, a native recording app, and on coaching the people who ship them.</p>
       <div class="hero-actions">
         <a class="btn primary" href="#projects">See the work</a>
         <a class="btn" href="#resume">Read the resume</a>
@@ -227,6 +227,7 @@ footer{padding-block:28px 40px;font-family:var(--mono);font-size:.74rem;color:va
       <div class="row"><span class="k">Last role</span><span class="v">CTO, Kamina GO · Grupo Traxión<br>through Oct 2026</span></div>
       <div class="row"><span class="k">In production</span><span class="v">AI document routing · internal LLM agent · multimodal evidence pipeline · multi-tenant analytics</span></div>
       <div class="row"><span class="k">Hands-on now</span><span class="v">MCP servers · computer-use agents · voice agents · Rust / Tauri · Claude Code plugins</span></div>
+      <div class="row"><span class="k">Product</span><span class="v"><a href="https://nullcolor.app" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px">Nullcolor</a>: native screen + webcam recorder with a built-in editor, macOS and Windows</span></div>
       <div class="row"><span class="k">Open source</span><span class="v">77 public repos · gh-cms 179★</span></div>
       <div class="row"><span class="k">Languages</span><span class="v">Spanish (native) · English (professional)</span></div>
     </aside>
@@ -318,7 +319,7 @@ footer{padding-block:28px 40px;font-family:var(--mono);font-size:.74rem;color:va
    CONTENT. Edit this block to update the site; the page renders from it.
    Areas are the filter keys. Projects and jobs reference them by id.
    ============================================================ */
-const UPDATED = "2026-10-12";
+const UPDATED = "2026-10-13";
 
 const AREAS = [
   {id:"agents", name:"Agentic AI & LLM systems", icon:"agent",
@@ -343,25 +344,26 @@ const AREAS = [
   {id:"cloud", name:"Cloud & serverless platforms", icon:"cloud",
    blurb:"AWS-first platform engineering: event-driven services, infrastructure as code, secure access and cost-aware design.",
    proof:["Serverless document pipeline on Lambda, S3, DynamoDB, Bedrock and CDK, costed at about $40 a month for 5,000 documents (own)",
-          "AWS CDK and CloudFormation recipes: Fargate access through SSM and KMS, API Gateway with CORS and DynamoDB CRUD, CDK pipelines (own)",
+          "Infrastructure as code on AWS CDK and CloudFormation across client platforms, from Fargate services to event-driven Lambda flows",
           "Buildpack and container toolchains for Laravel apps, from Docker Hub images to Vercel deploys (own, Laraboot)"],
    tags:["AWS","CDK","Lambda","Fargate","GCP","Docker","buildpacks","Cloudflare Workers"]},
   {id:"data", name:"Data platforms & analytics", icon:"chart",
    blurb:"Multi-tenant reporting that operations people open every morning, and the data architecture under it.",
    proof:["Custom multi-tenant dashboards and analytics on Athena and Metabase (team, Kamina GO)",
           "Vector search on PostgreSQL + pgvector for document retrieval (own)",
-          "Data architecture consulting across 20+ years of client work"],
+          "Data architecture consulting across 20+ years of client work, from crawlers and pipelines to reporting"],
    tags:["Athena","Metabase","PostgreSQL","pgvector","DynamoDB","multi-tenant"]},
   {id:"devtools", name:"Developer tooling & automation", icon:"tool",
    blurb:"Making engineers faster: CI as a product, agent-native tooling and small CLIs that remove a chore.",
    proof:["gh-cms: a headless CMS built on GitHub Issues and Actions, 179 stars and 13 forks (own)",
           "So Record: Claude Code plugin that turns Playwright sessions into cinematic videos, driven by two Rust binaries (own)",
           "Muse: a Claude Code skill that reviews work through 17 distilled creative perspectives (own)",
-          "prrr: CLI that drafts pull requests with an LLM (own)"],
+          "Nullcolor: one-click screen and webcam recording for people who document and demo software (own product)"],
    tags:["GitHub Actions","Claude Code","Playwright","CLI","Python","TypeScript"]},
   {id:"native", name:"Native & systems", icon:"chip",
    blurb:"Rust for the parts that must be fast and reliable, plus native shells where the experience lives on the device.",
-   proof:["Rust session engine and native video exporter behind So Record; Tauri desktop work (own)",
+   proof:["Nullcolor: native macOS and Windows app that captures screen and webcam together, edits and exports 4K/60 (own product)",
+          "Rust session engine and native video exporter behind So Record; Tauri desktop work (own)",
           "iOS Live Activities demo: ActivityKit and WidgetKit on the Dynamic Island and Lock Screen (own)",
           "Web terminal that keeps PTY processes alive and streams them to the browser over Socket.IO (own)"],
    tags:["Rust","Tauri","Swift","ActivityKit","PTY","xterm.js"]},
@@ -374,6 +376,11 @@ const AREAS = [
 ];
 
 const PROJECTS = [
+  {name:"Nullcolor", year:"2026", areas:["native","devtools"], stars:null, featured:true,
+   url:"https://nullcolor.app",
+   what:"A native desktop app that records screen and webcam together in one take, then trims, cuts, adds transitions, fixes audio and exports 4K/60 MP4 without leaving the app. Every recording lands in a searchable library you can re-edit later. Free for individuals; commercial licence at $99.",
+   how:"Shipped as a product, not a repo: macOS on Apple Silicon and Windows x64 builds, a pricing page, a blog and a release cadence (v0.10.0 in April 2026). One-click capture with no setup is the whole pitch, so most of the work is in the capture engine and the editor's responsiveness.",
+   stack:"Native desktop · macOS (Apple Silicon) · Windows x64 · 4K/60 capture · MP4 export", demo:"https://nullcolor.app/download"},
   {name:"So Record", year:"2026", areas:["devtools","agents","native"], stars:null, featured:true,
    url:"https://github.com/oscarnevarezleal/so-record-plugin",
    what:"A Claude Code plugin that records a Playwright browser session driven by natural-language instructions and renders it as a cinematic video: auto-zoom on click clusters, injected cursor tracking, rounded corners, drop shadow, H.264 output.",
@@ -404,11 +411,6 @@ const PROJECTS = [
    what:"Hackathon build of a serverless pipeline that classifies business documents, extracts vendor, invoice number, total and due date, embeds them, routes them to the right folder and team by email, and answers questions over them through a RAG chat API.",
    how:"Upload through a Lambda URL to S3; S3 events trigger classification with Bedrock, extraction with Bedrock or Textract, Titan embeddings into PostgreSQL + pgvector, metadata to DynamoDB, notifications by SES. Five CDK stacks, Makefile, Postman collection and OpenAPI spec. Tested on 2,677 PDFs; about $40 a month at 5,000 documents.",
    stack:"AWS Lambda · Bedrock · Textract · pgvector · DynamoDB · CDK"},
-  {name:"prrr", year:"2025", areas:["devtools","agents"], stars:null,
-   url:"https://github.com/oscarnevarezleal/prr",
-   what:"A small CLI that drafts a pull request description from the repository state, with a selectable tone.",
-   how:"Python package on PyPI; init once, then generate.",
-   stack:"Python · OpenAI API · Poetry"},
   {name:"gh-cms", year:"2021–2024", areas:["devtools","cloud"], stars:179,
    url:"https://github.com/oscarnevarezleal/gh-cms",
    what:"A headless CMS where a GitHub Issue is the content entry point: open an issue, and a post is generated, built with Hugo and published to GitHub Pages by Actions. An optional ngrok workflow previews content before publishing.",
@@ -418,17 +420,7 @@ const PROJECTS = [
    url:"https://github.com/oscarnevarezleal?tab=repositories&q=laraboot",
    what:"A buildpack-based toolchain for bootstrapping Laravel applications: starter-kit and model buildpacks, Rector upgrades, TypeScript build tasks, a Laravel installer Action and a deploy-to-Vercel demo, with images on Docker Hub.",
    how:"Cloud Native Buildpacks written in Go, GitHub Actions for the workflow, articles on Medium documenting each piece.",
-   stack:"Go · Buildpacks · PHP · GitHub Actions · Docker"},
-  {name:"AWS infrastructure recipes", year:"2019–2022", areas:["cloud"], stars:null,
-   url:"https://github.com/oscarnevarezleal?tab=repositories&q=cdk",
-   what:"A set of small, runnable proofs of concept: Fargate access through SSM with KMS keys, API Gateway with CORS and Lambda CRUD on DynamoDB, CDK pipelines, an ECS cluster in CloudFormation, Amazon IVS and Chime demos in React.",
-   how:"Each repo is one idea, deployable with a single CDK or CloudFormation command.",
-   stack:"AWS CDK · CloudFormation · TypeScript · React"},
-  {name:"E-commerce crawler", year:"2019", areas:["cloud","data"], stars:5,
-   url:"https://github.com/oscarnevarezleal/ecommerce-crawler",
-   what:"A parallel e-commerce crawler running Puppeteer workers in Docker on Google Cloud.",
-   how:"Containerised headless Chrome workers fanned out across GCP.",
-   stack:"JavaScript · Puppeteer · Docker · GCP"}
+   stack:"Go · Buildpacks · PHP · GitHub Actions · Docker"}
 ];
 
 const JOBS = [
@@ -448,6 +440,7 @@ const JOBS = [
    bullets:[
      "Designed and shipped serverless and container platforms with infrastructure as code (CDK, CloudFormation, buildpacks).",
      "Built data and document pipelines, from crawlers to extraction and analytics.",
+     "Ships Nullcolor, a native screen and webcam recording app for macOS and Windows.",
      "Open-source maintainer: gh-cms (179 stars), Laraboot toolchain, GitHub Actions and Claude Code plugins.",
      "Mentor on Codementor, pairing with engineers on architecture and cloud problems."
    ]}
@@ -463,6 +456,7 @@ const STACK = [
 ];
 
 const POSTS = [
+  {kind:"Product", title:"Nullcolor", url:"https://nullcolor.app", note:"Screen and webcam capture with a built-in editor. Native on macOS and Windows; free for individuals."},
   {kind:"Medium", title:"Oscar's Medium: Laraboot, buildpacks and cloud notes", url:"https://oscar-nevarez.medium.com/", note:"Articles on specialization in software and a series on the Laraboot buildpack toolchain."},
   {kind:"GitHub", title:"77 public repositories", url:"https://github.com/oscarnevarezleal", note:"Agent tooling, AWS recipes, buildpacks and demos. Pair Extraordinaire ×4, Pull Shark ×4."},
   {kind:"Codementor", title:"Mentoring on Codementor", url:"https://www.codementor.io/@fuwire", note:"Pairing sessions on architecture, cloud and AI integration."},
@@ -475,6 +469,7 @@ const LINKS = [
   {label:"GitHub", value:"oscarnevarezleal", url:"https://github.com/oscarnevarezleal"},
   {label:"Medium", value:"oscar-nevarez", url:"https://oscar-nevarez.medium.com/"},
   {label:"X", value:"@wownevarez", url:"https://x.com/wownevarez"},
+  {label:"Nullcolor", value:"nullcolor.app", url:"https://nullcolor.app"},
   {label:"Site", value:"onevarez.com", url:"https://onevarez.com"}
 ];
 
@@ -561,6 +556,7 @@ function renderResume(){
         <li>Internal AI agent over company datasets and APIs with a Slack interface, used across business areas.</li>
         <li>Multimedia evidence system (audio, video, images) producing structured outputs for downstream systems.</li>
         <li>Multi-tenant analytics on Athena and Metabase for operations and customers.</li>
+        <li>Product: Nullcolor, a native macOS and Windows screen and webcam recorder with a built-in editor (free for individuals, commercial licence).</li>
         <li>Open source: gh-cms (179 stars), So Record, Muse, Smart Document Router, Laraboot.</li>
       </ul>
     </div>
