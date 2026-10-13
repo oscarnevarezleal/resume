@@ -358,16 +358,15 @@ const AREAS = [
    blurb:"Making engineers faster: CI as a product, agent-native tooling and small CLIs that remove a chore.",
    proof:["gh-cms: a headless CMS built on GitHub Issues and Actions, 179 stars and 13 forks (own)",
           "So Record: Claude Code plugin that turns Playwright sessions into cinematic videos, driven by two Rust binaries (own)",
-          "Muse: a Claude Code skill that reviews work through 17 distilled creative perspectives (own)",
+          "Kineto: single-binary CLI that gives any screen recording a cinematic composition, with zoom segments as JSON (own)",
           "Nullcolor: one-click screen and webcam recording for people who document and demo software (own product)"],
    tags:["GitHub Actions","Claude Code","Playwright","CLI","Python","TypeScript"]},
   {id:"native", name:"Native & systems", icon:"chip",
    blurb:"Rust for the parts that must be fast and reliable, plus native shells where the experience lives on the device.",
    proof:["Nullcolor: native macOS and Windows app that captures screen and webcam together, edits and exports 4K/60 (own product)",
-          "Rust session engine and native video exporter behind So Record; Tauri desktop work (own)",
-          "iOS Live Activities demo: ActivityKit and WidgetKit on the Dynamic Island and Lock Screen (own)",
-          "Web terminal that keeps PTY processes alive and streams them to the browser over Socket.IO (own)"],
-   tags:["Rust","Tauri","Swift","ActivityKit","PTY","xterm.js"]},
+          "Kineto: cross-platform Rust video composition engine on static FFmpeg and libx264/x265, with a per-frame RGBA pipeline and eased auto-zoom (own)",
+          "Rust session engine and native video exporter behind So Record; Tauri desktop work (own)"],
+   tags:["Rust","Tauri","FFmpeg","libx264","AVFoundation","CLI"]},
   {id:"leadership", name:"Engineering leadership", icon:"people",
    blurb:"Owning technical direction and the people behind it: hiring, coaching, priorities and the consequential calls.",
    proof:["CTO at Prixz, Mexico's first native online pharmacy; Tech Lead Manager at Kamina GO, the technology arm of a Grupo Traxión logistics business",
@@ -382,6 +381,11 @@ const PROJECTS = [
    what:"A native desktop app that records screen and webcam together in one take, then trims, cuts, adds transitions, fixes audio and exports 4K/60 MP4 without leaving the app. Every recording lands in a searchable library you can re-edit later. Free for individuals; commercial licence at $99.",
    how:"Shipped as a product, not a repo: macOS on Apple Silicon and Windows x64 builds, a pricing page, a blog and a release cadence (v0.10.0 in April 2026). One-click capture with no setup is the whole pitch, so most of the work is in the capture engine and the editor's responsiveness.",
    stack:"Native desktop · macOS (Apple Silicon) · Windows x64 · 4K/60 capture · MP4 export", demo:"https://nullcolor.app/download"},
+  {name:"Kineto", year:"2026", areas:["native","devtools"], stars:null, featured:true,
+   url:"https://github.com/onevarez/kineto-engine",
+   what:"A cross-platform engine that turns a plain screen recording into a cinematic one: background colour and padding, anti-aliased rounded corners, drop shadow, and smooth auto-zoom with four easing curves (smooth, snappy, cinematic, spring). One static binary for macOS, Linux and Windows, no runtime dependencies. The same treatment So Record applies on macOS, available everywhere.",
+   how:"Rust with FFmpeg linked statically for decoding (H.264, VP8) and libx264/libx265 for encoding. Each frame is Lanczos-scaled, composited in RGBA (background, shadow, video, corner mask), cropped and scaled per frame for zoom from a JSON segment file, then converted to YUV420P and encoded with CRF control. The shadow is rendered at quarter resolution, blurred and upscaled to keep 4K fast.",
+   stack:"Rust · FFmpeg (static) · libx264 · libx265 · Lanczos · GPL-2.0"},
   {name:"So Record", year:"2026", areas:["devtools","agents","native"], stars:null, featured:true,
    url:"https://github.com/oscarnevarezleal/so-record-plugin",
    what:"A Claude Code plugin that records a Playwright browser session driven by natural-language instructions and renders it as a cinematic video: auto-zoom on click clusters, injected cursor tracking, rounded corners, drop shadow, H.264 output.",
@@ -392,21 +396,6 @@ const PROJECTS = [
    what:"A daily GitHub Actions pipeline that harvests leadership roles from 8 job boards and about 455 company ATS boards, verifies every link is live with ATS APIs and Playwright, screens each posting with an LLM against explicit rules, and emails a digest. A Claude routine reviews the day's leads, learns taste from how they get sorted on a board, and widens the search on thin days.",
    how:"Python harvesters per ATS (Greenhouse, Ashby, Lever, Workday and more), a rules module that is the single source of truth for every filter, a funnel dashboard, a Chrome extension plus Cloudflare Worker for sending postings in, and recruiter-InMail parsing from Gmail.",
    stack:"Python · Playwright · GitHub Actions · Claude · Cloudflare Workers · artifact DB"},
-  {name:"Muse", year:"2026", areas:["agents","devtools"], stars:null,
-   url:"https://github.com/oscarnevarezleal/claude-muse-skill",
-   what:"A Claude Code skill that gives creative counsel by routing a problem through 17 distilled creative minds, from Rick Rubin to David Bowie. Commands to channel one voice, review a diff for thinking style, or play devil's advocate.",
-   how:"Interviews are transcribed and distilled into a catalog of identity, lens, principles and triggers; the skill matches the two or three most relevant and answers from their perspective. New minds are added with a distill command.",
-   stack:"Claude Code skills · Python · Markdown catalog"},
-  {name:"Dynamic Island delivery tracker", year:"2026", areas:["native"], stars:null,
-   url:"https://github.com/oscarnevarezleal/ios-dynamic-island",
-   what:"An iOS app that tracks a delivery through five stages on the Dynamic Island and Lock Screen, showing compact, expanded, minimal and lock-screen presentations of a Live Activity.",
-   how:"ActivityKit lifecycle manager in the app, shared ActivityAttributes model, WidgetKit extension for the island UI.",
-   stack:"Swift · ActivityKit · WidgetKit · iOS 17"},
-  {name:"q-web", year:"2026", areas:["devtools","native"], stars:null,
-   url:"https://github.com/oscarnevarezleal/q-web",
-   what:"A web interface for a terminal CLI that keeps PTY processes alive on the server and streams input and output to the browser, so an interactive CLI works from a phone.",
-   how:"Express and Socket.IO backend spawning PTYs per authenticated session; xterm.js front end with fit and web-links addons; Docker deploy.",
-   stack:"TypeScript · Node.js · Socket.IO · xterm.js · Docker"},
   {name:"Smart Document Router", year:"2025", areas:["docs","agents","cloud","data"], stars:null, featured:true,
    url:"https://github.com/oscarnevarezleal/sdr-rag-hackathon",
    what:"Hackathon build of a serverless pipeline that classifies business documents, extracts vendor, invoice number, total and due date, embeds them, routes them to the right folder and team by email, and answers questions over them through a RAG chat API.",
@@ -458,7 +447,7 @@ const STACK = [
   {k:"Languages", v:"Python · TypeScript / Node · Rust · Go · PHP · Swift"},
   {k:"Cloud", v:"AWS (Lambda, Fargate, S3, DynamoDB, Athena, CDK) · GCP · Cloudflare Workers · Docker · buildpacks"},
   {k:"Data", v:"PostgreSQL · DynamoDB · Athena · Metabase · pgvector"},
-  {k:"Product surfaces", v:"Mobile capture apps · Slack bots · Tauri desktop · iOS Live Activities · web"},
+  {k:"Product surfaces", v:"Mobile capture apps · Slack bots · Tauri and native desktop · video tooling · web"},
   {k:"Ways of working", v:"Architect first, then ship small · hiring and coaching · roadmaps tied to operating metrics"}
 ];
 
@@ -565,7 +554,7 @@ function renderResume(){
         <li>Multimedia evidence system (audio, video, images) producing structured outputs for downstream systems.</li>
         <li>Multi-tenant analytics on Athena and Metabase for operations and customers.</li>
         <li>Product: Nullcolor, a native macOS and Windows screen and webcam recorder with a built-in editor (free for individuals, commercial licence).</li>
-        <li>Open source: gh-cms (179 stars), So Record, Muse, Smart Document Router, Laraboot.</li>
+        <li>Open source: gh-cms (179 stars), Kineto, So Record, Smart Document Router, Laraboot.</li>
       </ul>
     </div>
     <div class="block">

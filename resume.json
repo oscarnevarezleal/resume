@@ -98,6 +98,18 @@
       ]
     },
     {
+      "name": "Kineto",
+      "description": "Cross-platform Rust engine that gives a screen recording a cinematic composition: background, padding, rounded corners, shadow and eased auto-zoom. Single static binary for macOS, Linux and Windows on FFmpeg, libx264 and libx265.",
+      "url": "https://github.com/onevarez/kineto-engine",
+      "keywords": [
+        "Rust",
+        "FFmpeg",
+        "libx264",
+        "libx265",
+        "video"
+      ]
+    },
+    {
       "name": "So Record",
       "description": "Claude Code plugin that records Playwright browser sessions and renders cinematic videos; Rust session engine and native exporter.",
       "url": "https://github.com/oscarnevarezleal/so-record-plugin",
@@ -106,15 +118,6 @@
         "Playwright MCP",
         "Claude Code",
         "AVFoundation"
-      ]
-    },
-    {
-      "name": "Muse",
-      "description": "Claude Code skill that reviews work through 17 distilled creative perspectives.",
-      "url": "https://github.com/oscarnevarezleal/claude-muse-skill",
-      "keywords": [
-        "Claude Code",
-        "Python"
       ]
     },
     {
@@ -136,26 +139,6 @@
       "keywords": [
         "GitHub Actions",
         "Hugo"
-      ]
-    },
-    {
-      "name": "q-web",
-      "description": "Web terminal that keeps PTY processes alive and streams them to the browser.",
-      "url": "https://github.com/oscarnevarezleal/q-web",
-      "keywords": [
-        "TypeScript",
-        "Socket.IO",
-        "xterm.js"
-      ]
-    },
-    {
-      "name": "Dynamic Island delivery tracker",
-      "description": "iOS Live Activities demo with ActivityKit and WidgetKit.",
-      "url": "https://github.com/oscarnevarezleal/ios-dynamic-island",
-      "keywords": [
-        "Swift",
-        "ActivityKit",
-        "WidgetKit"
       ]
     },
     {
